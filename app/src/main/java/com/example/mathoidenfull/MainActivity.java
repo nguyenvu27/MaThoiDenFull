@@ -5,7 +5,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.mathoidenfull.activity.MeDongLongLinhActivity;
@@ -27,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements FaceAdapter.OnCal
     private RecyclerView mRcvFace;
     private FaceAdapter mAdapter;
     private List<Face> mListFace;
+    private ImageView imageView ;
 
 
     @Override
@@ -35,30 +43,54 @@ public class MainActivity extends AppCompatActivity implements FaceAdapter.OnCal
         setContentView(R.layout.activity_main);
 
         initView();
+
     }
+
 
     private void initView() {
         mListFace = new ArrayList<>();
 //        for (int i = 0; i < 2; i++) {
-        mListFace.add(new Face("THÀNH CỔ TINH TUYỆT", R.drawable.mathoiden1));
-        mListFace.add(new Face("MÊ ĐỘNG LONG LĨNH", R.drawable.mathoiden2));
-        mListFace.add(new Face("TRÙNG CỐC VÂN NAM", R.drawable.mathoiden8));
-        mListFace.add(new Face("THẦN CUNG CÔN LUÂN", R.drawable.mathoiden4));
-        mListFace.add(new Face("MỘ HOÀNG BÌ TỬ", R.drawable.mathoiden5));
-        mListFace.add(new Face("NAM HẢI QUY KHƯ", R.drawable.mathoiden6));
-        mListFace.add(new Face("THI VƯƠNG TƯƠNG TÂY", R.drawable.mathoiden7));
-        mListFace.add(new Face("VU HIỆP QUAN SƠN", R.drawable.vuhiepquanson));
-        mListFace.add(new Face("THÁNH TUYỀN TẦM TUNG", R.drawable.mathoiden9));
+        mListFace.add(new Face("1.THÀNH CỔ TINH TUYỆT", R.drawable.mathoiden1));
+        mListFace.add(new Face("2.MÊ ĐỘNG LONG LĨNH", R.drawable.mathoiden2));
+        mListFace.add(new Face("3.TRÙNG CỐC VÂN NAM", R.drawable.mathoiden8));
+        mListFace.add(new Face("4.THẦN CUNG CÔN LUÂN", R.drawable.mathoiden4));
+        mListFace.add(new Face("5.MỘ HOÀNG BÌ TỬ", R.drawable.mathoiden5));
+        mListFace.add(new Face("6.NAM HẢI QUY KHƯ", R.drawable.mathoiden6));
+        mListFace.add(new Face("7.THI VƯƠNG TƯƠNG TÂY", R.drawable.mathoiden7));
+        mListFace.add(new Face("8.VU HIỆP QUAN SƠN", R.drawable.vuhiepquanson));
+        mListFace.add(new Face("9.THÁNH TUYỀN TẦM TUNG", R.drawable.mathoiden9));
 //        }
 
 
         mRcvFace = (RecyclerView) findViewById(R.id.rcv_face);
+
         mRcvFace.setHasFixedSize(true);
         mRcvFace.setLayoutManager(new GridLayoutManager(this, 2));
         mAdapter = new FaceAdapter(this, mListFace);
         mRcvFace.setAdapter(mAdapter);
     }
 
+
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater() ;
+//        inflater.inflate(R.menu.search_menu, menu);
+//        MenuItem item = menu.findItem(R.id.rcv_face) ;
+//        SearchView searchView = (SearchView) item.getActionView();
+//       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//           @Override
+//           public boolean onQueryTextSubmit(String s) {
+//               return false;
+//           }
+//
+//           @Override
+//           public boolean onQueryTextChange(String s) {
+//               return false;
+//           }
+//       });
+//       return super.onCreateOptionsMenu(menu) ;
+//    }
 
     @Override
     public void onItemClicked(int position) {
@@ -93,6 +125,8 @@ public class MainActivity extends AppCompatActivity implements FaceAdapter.OnCal
             Intent intent = new Intent(MainActivity.this, ThanhTuyenTamTungActivity.class);
             startActivity(intent);
         }
+
+
 
 
     }
